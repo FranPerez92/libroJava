@@ -18,12 +18,10 @@ public class UtilidadesColecionesTest extends TestCase {
 		
 		int[] ordenadorMayorMenor = UtilidadesColeciones.ordenarArray(aDesordando, true);
 		
-		for (int i = 0; i > ordenadorMayorMenor.length; i++) {
+		for (int i = ordenadorMayorMenor.length-1; i <= 0; i--) {
 			assertEquals(i, ordenadorMayorMenor[i]);
 		}
 		
 	}
-	
-	
 	
 }
