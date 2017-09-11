@@ -1,3 +1,4 @@
+package com.ipartek.formacion.javalibro.utilidades;
 
 public class UtilidadesString {
 	

@@ -1,3 +1,4 @@
+package com.ipartek.formacion.javalibro.ejercicios;
 import com.sun.org.apache.xpath.internal.operations.Equals;
 
 public class jugandoConString {

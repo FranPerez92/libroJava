@@ -1,5 +1,6 @@
+package com.ipartek.formacion.javalibro.pojo;
 
-public class Canciones {
+public class Cancion {
 
 	//Variable
 	private String titulo;
@@ -7,14 +8,14 @@ public class Canciones {
 	private int duracion;
 	
 	//Constructores
-	public Canciones() {
+	public Cancion() {
 		super();
 		this.titulo="";
 		this.artista="";
 		this.duracion=0;
 	}
 
-	public Canciones(String titulo, String artista, int duracion) {
+	public Cancion(String titulo, String artista, int duracion) {
 		super();
 		this.titulo = titulo;
 		this.artista = artista;
