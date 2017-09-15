@@ -11,7 +11,7 @@ public class UtilidadesColeciones {
 	 */
 	static int[] ordenarArray( int[] aDesordenado, boolean orden ) {
 		
-		int[] resul = aDesordenado;
+		int[] resul = aDesordenado.clone();
 		
 		int aux;
 		
