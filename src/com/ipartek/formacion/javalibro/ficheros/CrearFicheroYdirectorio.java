@@ -51,13 +51,13 @@ public class CrearFicheroYdirectorio {
 					valor = sc.nextLine();
 					bw.write(valor.toString());
 					bw.newLine();
-					//System.getProperty("line.separator");
+					// System.getProperty("line.separator");
 					System.out.println("¿Quieres meter mas lineas?: s para continuar ");
 					valor = sc.nextLine();
 					if (!"s".equals(valor.toString().toLowerCase())) {
 						linea = false;
 					}
-					
+
 				} while (linea);
 
 			} catch (IOException e1) {
@@ -71,7 +71,7 @@ public class CrearFicheroYdirectorio {
 				}
 			}
 
-			System.out.println("¿Quieres meter mas carpetas?: s para continuar ");
+			System.out.println("¿Quieres meter mas carpetas en la raiz?: s para continuar ");
 			valor = sc.nextLine();
 			if (!"s".equals(valor.toString().toLowerCase())) {
 				continuar = false;
