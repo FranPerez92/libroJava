@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.ipartek.formacion.javalibro.pojo.Cancion;
 
 public class listadoCanciones {
-
+/*
 	static ArrayList<Cancion> canciones = new ArrayList<Cancion>();
 	static Scanner sc;
 
@@ -71,7 +71,7 @@ public class listadoCanciones {
 
 		String titulo = "";
 		String artista = "";
-		int duracion = 0;
+		String duracion = 0;
 
 		System.out.println("Añadiendo nueva cancion");
 
@@ -80,7 +80,7 @@ public class listadoCanciones {
 		System.out.println("Introduce artista: ");
 		artista = sc.next();
 		System.out.println("Introduce duracion: ");
-		duracion = sc.nextInt();
+		duracion = sc.next();
 
 		canciones.add(new Cancion(titulo, artista, duracion));
 
@@ -163,5 +163,5 @@ public class listadoCanciones {
 		System.out.println("4.Detalles");
 		System.out.println("5.Salir");
 	}
-
+*/
 }

@@ -22,7 +22,7 @@ public class PersonaHash {
 		Persona persona = null;
 		boolean lineaBien = true;
 
-		File f = new File("C:\\Desarrollo\\workspace\\JavaLibro\\data\\personas.txt");
+		File f = new File("data\\personas.txt");
 		FileReader fr;
 
 		String linea;
@@ -50,7 +50,12 @@ public class PersonaHash {
 					lineaBien=comprobarCamposVacios(parts);
 
 					if (lineaBien = true) {
-						persona = new Persona(part0, part1, part2, part3Int, part4, part5, part6);
+						try {
+							persona = new Persona(part0, part1, part2, part6, part4, part5, part3Int);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						// Meter en el hash
 						listaNombres.add(persona);
 						// Meter en el arrayList

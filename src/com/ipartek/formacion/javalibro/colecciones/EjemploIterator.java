@@ -1,5 +1,6 @@
 package com.ipartek.formacion.javalibro.colecciones;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -7,24 +8,36 @@ public class EjemploIterator {
 
 	public static void main(String[] args) {
 		
-		HashSet<String> listaNombres = new HashSet<String>();
 		
+		long tInicio = System.currentTimeMillis();
+		
+		HashSet<String> listaNombres = new HashSet<>();
+		
+		listaNombres.add("Zorro");
 		listaNombres.add("Manolo");
 		listaNombres.add("Manola");
 		listaNombres.add("Manolito");
+		listaNombres.add("Ander");
 		listaNombres.add("Manolita");
 		listaNombres.add("Manuel");
+		listaNombres.add("Manolo");
 		
-		//Es mas optimo para recorrec colecciones que un for
-		Iterator it = listaNombres.iterator();
+		//Iterator es mas optimo para recorrer colecciones que un for
+		Iterator<String> it = listaNombres.iterator();
 		String nombre = "";
-		while(it.hasNext()) {
-			nombre = (String)it.next();
+		while( it.hasNext() ) {
+			nombre = it.next();
 			System.out.println(nombre);
 		}
 		
-		//Para ordenar
-		//listanombres
+		
+		long tFin = System.currentTimeMillis();
+		
+		System.out.println("Tiempo de ejecucion " + (tFin - tInicio) + " ms");
+		
+		
+		
+		
 		
 	}
 
