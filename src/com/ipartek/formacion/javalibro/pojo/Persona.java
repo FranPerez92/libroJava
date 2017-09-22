@@ -23,7 +23,8 @@ public class Persona {
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		setEmail(email);
-		this.dni = dni;
+		setDni(dni);
+		//this.dni = dni;
 		this.rol = rol;
 		//this.edad = edad;
 		setEdad(edad);

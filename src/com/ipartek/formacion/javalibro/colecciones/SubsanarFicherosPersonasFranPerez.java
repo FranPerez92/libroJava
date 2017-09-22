@@ -115,7 +115,7 @@ public class SubsanarFicherosPersonasFranPerez {
 
 				pIteracion = it.next();
 				texto = pIteracion.getNombre() + "," + pIteracion.getApellido1() + "," + pIteracion.getApellido2() + ","
-						+ pIteracion.getEdad() + "," + pIteracion.getDni() + "," + pIteracion.getRol();
+						+ pIteracion.getEdad() + "," + pIteracion.getEmail() + "," + pIteracion.getDni() + "," + pIteracion.getRol();
 
 				bw.write(texto);
 				bw.newLine();

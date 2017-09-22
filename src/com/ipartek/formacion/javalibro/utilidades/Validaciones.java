@@ -29,7 +29,7 @@ public class Validaciones {
 	 * @param dni String Documento Identidad Nacional con 8 digitos y letra ( sin espacios, ni guiones)
 	 * @return true si es valido, false en caso contrario
 	 */
-	static boolean dni(String dni) {
+	public static boolean dni(String dni) {
 		
 		boolean resul = false;
 		

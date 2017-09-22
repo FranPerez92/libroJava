@@ -5,45 +5,34 @@ import junit.framework.TestCase;
 public class ValidacionesTest extends TestCase {
 
 	public void testEmail() {
-		
-		assertFalse(Validaciones.email(""));
-		assertFalse(Validaciones.email("a@gmail.e"));
-		assertFalse(Validaciones.email("a@gmailcom"));
-		assertFalse(Validaciones.email("a@.com"));
-		assertFalse(Validaciones.email("agmail.com"));
-		assertFalse(Validaciones.email(null));
-		assertTrue(Validaciones.email("a@gmail.com"));
-	}
 
-	public void testDni() {
+		assertFalse(Validaciones.email(null));
+		assertFalse(Validaciones.email(""));
+		assertFalse(Validaciones.email("auraga.ipartek.com"));
+		assertFalse(Validaciones.email("auraga.ipartek."));
+		assertFalse(Validaciones.email("auraga@"));
+		assertFalse(Validaciones.email("auraga@ipartekcom"));
+		assertFalse(Validaciones.email("auraga@ipartekcom.e"));
+
+		assertTrue(Validaciones.email("auraga@ipartek.com"));
+
+	}
+	
+	public void testDNI() {
 		
-		assertFalse(Validaciones.dni(""));
-		assertFalse(Validaciones.dni("12332e12f"));
-		assertFalse(Validaciones.dni("12332112"));
-		assertFalse(Validaciones.dni("1233212f"));
-		assertFalse(Validaciones.dni("123123"));
 		assertFalse(Validaciones.dni(null));
+		assertFalse(Validaciones.dni(""));
+		assertFalse(Validaciones.dni("2eee"));
+		assertFalse(Validaciones.dni("11111111"));
+		assertFalse(Validaciones.dni("1111111Y"));
 		
-		assertTrue(Validaciones.dni("12345678f"));
+		assertFalse("Sin guiones",Validaciones.dni("11111111-H"));
+		assertFalse("Sin espacios en blaco",Validaciones.dni("11111111 H"));
+		
+		assertTrue(Validaciones.dni("11111111H"));
+		
 	}
 	
-	public void testEdad() {
-		assertFalse(Validaciones.edad(0));
-		assertFalse(Validaciones.edad(2));
-		
-		assertTrue(Validaciones.edad(25));
-	}
 	
-	public void testLongitud() {
-		
-		String[] parts = {"1","2","3","4","5","6","7"};
-		String[] parts2 = {"1","2","3","4","5","6"};
-		String[] parts3 = {"1","2","3","4"};
-		
-		assertFalse(Validaciones.longitud(parts2));
-		assertFalse(Validaciones.longitud(parts3));
-		
-		assertTrue(Validaciones.longitud(parts));
-	}
-	
+
 }
