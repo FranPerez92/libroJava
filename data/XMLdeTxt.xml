@@ -1,1 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><personas><persona>Ted,Upton,Sant Andreu De La Barca,8,tedfupton@mailinator.com,12277015Y,TRABAJADOR</persona><persona>Susan,Ball,Carreño,33,SusanJBall@trashymail.com,39503517M,TRABAJADOR</persona><persona>Scott,Broadway,Quintanar Del Rey,16,ScottJBroadway@mailinator.com,10161153Y,TRABAJADOR</persona><persona>Alexis,Matney,Forfoleda,37,AlexisJMatney@mailinator.com,25918258H,TRABAJADOR</persona><persona>Tammy,Channel,Santanyí,7,TammyMChannel@trashymail.com,83409853P,JEFE</persona><persona>Michelle,Williams,Lobeira,32,MichelleEWilliams@mailinator.com,52899659G,TRABAJADOR</persona><persona>Sofia,Gutierrez,Pontedeume,15,SofiaJGutierrez@spambob.com,7476627V,TRABAJADOR</persona><persona>Mark,Ellis,Gibraleón,21,MarkGEllis@dodgit.com,730804W,JEFE</persona><persona>Jennifer,Harrell,Guardamar Del Segura,3,JenniferRHarrell@mailinator.com,32562603P,TRABAJADOR</persona></personas>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<personas>
+	<persona>
+		<nombre>Alexis</nombre>
+		<apellido1>Matney</apellido1>
+		<apellido2>Forfoleda</apellido2>
+		<edad>37</edad>
+		<email>AlexisJMatney@mailinator.com</email>
+		<dni>25918258H</dni>
+		<rol>TRABAJADOR</rol>
+	</persona>
+	<persona>
+		<nombre>Susan</nombre>
+		<apellido1>Ball</apellido1>
+		<apellido2>Carreño</apellido2>
+		<edad>33</edad>
+		<email>SusanJBall@trashymail.com</email>
+		<dni>39503517M</dni>
+		<rol>TRABAJADOR</rol>
+	</persona>
+	<persona>
+		<nombre>Michelle</nombre>
+		<apellido1>Williams</apellido1>
+		<apellido2>Lobeira</apellido2>
+		<edad>32</edad>
+		<email>MichelleEWilliams@mailinator.com</email>
+		<dni>52899659G</dni>
+		<rol>TRABAJADOR</rol>
+	</persona>
+</personas>

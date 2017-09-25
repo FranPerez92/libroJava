@@ -95,10 +95,7 @@ public class SubsanarFicherosPersonasFranPerez {
 				//System.out.println("No se puede cerrar el buffer y el writer");
 			}
 		}
-
-		// recorrer de uno en uno para ver cuanto tarda
-		long inicio = System.currentTimeMillis();
-
+		
 		Collection cole = mapa.values();
 		Iterator<Persona> it = cole.iterator();
 		Persona pIteracion = null;

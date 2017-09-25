@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,23 +18,38 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.ipartek.formacion.javalibro.colecciones.CargarPersonas;
+import com.ipartek.formacion.javalibro.excepciones.PersonaException;
+import com.ipartek.formacion.javalibro.pojo.Persona;
+
 public class ConvertirTXTaXML_FranPerez {
 
 	static final String PATH_FICHERO_TXTAXML = "data\\txtaXML.txt";
 	static final String PATH_FICHERO_XMLDETXT = "data\\XMLdeTxt.xml";
+	
+	static final int NUM_CAMPOS_LINEA = 7;
+	static final int CAMPOS_NOMBRE = 0;
+	static final int CAMPOS_APE1 = 1;
+	static final int CAMPOS_APE2 = 2;
+	static final int CAMPOS_EDAD = 3;
+	static final int CAMPOS_MAIL = 4;
+	static final int CAMPOS_DNI = 5;
+	static final int CAMPOS_ROL = 6;
 
 	public static void main(String[] args) {
 
-		ArrayList resultados = cargarTxt();
+		HashMap<String, Persona> resultados = cargarTxt();
 		crearXml(resultados);
 
 	}
 
-	private static ArrayList cargarTxt() {
+	private static HashMap<String, Persona> cargarTxt() {
 		
 		FileReader fr = null;
 		BufferedReader br = null;
-		ArrayList campos = new ArrayList();
+		String[] campos;
+		Persona p = null;
+		HashMap<String, Persona> mapa = new HashMap<String, Persona>();
 
 		try {
 
@@ -40,13 +58,21 @@ public class ConvertirTXTaXML_FranPerez {
 
 			String linea = "";
 
-			int i = 0;
+			String[] campos1;
 			while ((linea = br.readLine()) != null) {
-				campos.add(linea);
-				i++;
+
+				campos1 = linea.split(",");
+				if (campos1.length == NUM_CAMPOS_LINEA) {
+					try {
+						p = mapeoLinea(campos1);
+						mapa.put(p.getDni(), p);
+					} catch (Exception e) {
+					}
+				}
 			}
 
-			return campos;
+			br.close();
+			return mapa;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -56,7 +82,7 @@ public class ConvertirTXTaXML_FranPerez {
 
 	}
 
-	private static void crearXml(ArrayList<String> resultados) {
+	private static void crearXml(HashMap<String, Persona> resultados) {
 
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -66,13 +92,38 @@ public class ConvertirTXTaXML_FranPerez {
 			// root element
 			Element rootElement = doc.createElement("personas");
 			doc.appendChild(rootElement);
-
+			
+			Element tipo;
+			Collection listado = resultados.values();
+			
+			Iterator it = listado.iterator();
+			
 			// tipo element
-			for (int i = 0; i < resultados.size(); i++) {
-				String persona = (String) resultados.get(i);
-				Element tipo = doc.createElement("persona");
-				tipo.appendChild(doc.createTextNode(persona));
-				rootElement.appendChild(tipo);
+			while(it.hasNext()) {
+				Element personaEle = doc.createElement("persona");
+				Persona persona = (Persona) it.next();
+				tipo = doc.createElement("nombre");
+				tipo.appendChild(doc.createTextNode(persona.getNombre()));
+				personaEle.appendChild(tipo);
+				tipo = doc.createElement("apellido1");
+				tipo.appendChild(doc.createTextNode(persona.getApellido1()));
+				personaEle.appendChild(tipo);
+				tipo = doc.createElement("apellido2");
+				tipo.appendChild(doc.createTextNode(persona.getApellido2()));
+				personaEle.appendChild(tipo);
+				tipo = doc.createElement("edad");
+				tipo.appendChild(doc.createTextNode(Integer.toString(persona.getEdad())));
+				personaEle.appendChild(tipo);
+				tipo = doc.createElement("email");
+				tipo.appendChild(doc.createTextNode(persona.getEmail()));
+				personaEle.appendChild(tipo);
+				tipo = doc.createElement("dni");
+				tipo.appendChild(doc.createTextNode(persona.getDni()));
+				personaEle.appendChild(tipo);
+				tipo = doc.createElement("rol");
+				tipo.appendChild(doc.createTextNode(persona.getRol()));
+				personaEle.appendChild(tipo);
+				rootElement.appendChild(personaEle);
 			}
 			
 			// write the content into xml file
@@ -90,6 +141,13 @@ public class ConvertirTXTaXML_FranPerez {
 			e.printStackTrace();
 		}
 
+	}
+	
+	private static Persona mapeoLinea(String[] campos) throws NumberFormatException, PersonaException {
+		
+		Persona p = new Persona(campos[CAMPOS_NOMBRE], campos[CAMPOS_APE1], campos[CAMPOS_APE2], campos[CAMPOS_MAIL],
+				campos[CAMPOS_DNI], campos[CAMPOS_ROL], Integer.parseInt(campos[CAMPOS_EDAD]));
+		return p;
 	}
 
 }
