@@ -48,7 +48,7 @@ public class SubsanarFicherosPersonasFranPerez {
 	}
 
 	private static void cargaHahsMap() {
-		ArrayList<Persona> lista = new ArrayList();
+		ArrayList<Persona> lista = new ArrayList<Persona>();
 		FileReader fr = null;
 		BufferedReader br = null;
 		FileWriter fwInco = null;
@@ -65,6 +65,7 @@ public class SubsanarFicherosPersonasFranPerez {
 			String linea = "";
 			Persona p = null;
 			String[] campos;
+
 			while ((linea = br.readLine()) != null) {
 
 				campos = linea.split(",");
@@ -75,9 +76,9 @@ public class SubsanarFicherosPersonasFranPerez {
 					} catch (Exception e) {
 						// System.out.println("LINEA INCORECTA: " + linea);
 						try {
-							bwInco.write(linea);
-							bwInco.newLine();
 							bwInco.flush();
+							bwInco.newLine();
+							bwInco.write(linea);
 						} catch (IOException e2) {
 							System.out.println("No se puede escribir en el fichero");
 							e.printStackTrace();
@@ -89,13 +90,15 @@ public class SubsanarFicherosPersonasFranPerez {
 			e.printStackTrace();
 		} finally {
 			try {
-				fwInco.close();
+				fr.close();
+				br.close();
 				bwInco.close();
+				fwInco.close();
 			} catch (IOException e2) {
-				//System.out.println("No se puede cerrar el buffer y el writer");
+				// System.out.println("No se puede cerrar el buffer y el writer");
 			}
 		}
-		
+
 		Iterator<Persona> it = lista.iterator();
 		Persona pIteracion = null;
 
@@ -111,7 +114,8 @@ public class SubsanarFicherosPersonasFranPerez {
 
 				pIteracion = it.next();
 				texto = pIteracion.getNombre() + "," + pIteracion.getApellido1() + "," + pIteracion.getApellido2() + ","
-						+ pIteracion.getEdad() + "," + pIteracion.getEmail() + "," + pIteracion.getDni() + "," + pIteracion.getRol();
+						+ pIteracion.getEdad() + "," + pIteracion.getEmail() + "," + pIteracion.getDni() + ","
+						+ pIteracion.getRol();
 
 				bw.write(texto);
 				bw.newLine();
