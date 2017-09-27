@@ -48,7 +48,7 @@ public class SubsanarFicherosPersonasFranPerez {
 	}
 
 	private static void cargaHahsMap() {
-		HashMap<String, Persona> mapa = new HashMap<String, Persona>();
+		ArrayList<Persona> lista = new ArrayList();
 		FileReader fr = null;
 		BufferedReader br = null;
 		FileWriter fwInco = null;
@@ -71,7 +71,7 @@ public class SubsanarFicherosPersonasFranPerez {
 				if (campos.length == NUM_CAMPOS_LINEA) {
 					try {
 						p = mapeoLinea(campos);
-						mapa.put(p.getDni(), p);
+						lista.add(p);
 					} catch (Exception e) {
 						// System.out.println("LINEA INCORECTA: " + linea);
 						try {
@@ -96,8 +96,7 @@ public class SubsanarFicherosPersonasFranPerez {
 			}
 		}
 		
-		Collection cole = mapa.values();
-		Iterator<Persona> it = cole.iterator();
+		Iterator<Persona> it = lista.iterator();
 		Persona pIteracion = null;
 
 		FileWriter fw = null;
